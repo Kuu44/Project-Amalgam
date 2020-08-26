@@ -10,16 +10,31 @@
   <body>
 
 <div class="container">
-  {% for book in books%}
     <div style="margin-bottom:10px;">
   <ul class="list-group">
-    <li class="list-group-item"><a href="{% url 'show_book' book.id %}">{{book.isbn}}</a></li>
+    <li class="list-group-item">{{book.isbn}}</li>
     <li class="list-group-item">{{book.book_name}}</li>
     <li class="list-group-item">{{book.offered_price}}</li>
     <li class="list-group-item">{{book.original_price}}</li>
+    <li class="list-group-item">{{book.data_time}}</li>
+    <li class="list-group-item">{{book.description}}</li>
+    <li class="list-group-item">{{book.user}}</li>
   </ul>
   </div>
-  {% endfor %}
+</div>
+<div style="margin-bottom:10px;">
+{% for comment in comments %}
+<ul class="list-group">
+  <li class="list-group-item">{{comment.content}}</li>
+  <li class="list-group-item">{{comment.date_time}}</li>
+</ul>
+{% endfor %}
+</div>
+<div style="margin-bottom:10px;">
+  <form method="post" action="{% url 'show_book' book.id%}">
+    {%csrf_token %}
+    {{commentform.content}}
+  </form>
 </div>
 
 
