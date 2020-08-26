@@ -54,6 +54,7 @@ def show_book(request, pk):
             book = Books.objects.get(id=pk)
             temp = comment.save(commit=False)
             temp.book = book
+            temp.user = request.user
             temp.save()
     context = {
         'book': book,

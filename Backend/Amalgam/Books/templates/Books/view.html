@@ -23,12 +23,14 @@
   </div>
 </div>
 <div style="margin-bottom:10px;">
+  {% if comments %}
 {% for comment in comments %}
 <ul class="list-group">
   <li class="list-group-item">{{comment.content}}</li>
-  <li class="list-group-item">{{comment.date_time}}</li>
+  <li class="list-group-item">{{comment.user.username}} at {{comment.date_time}}</li>
 </ul>
 {% endfor %}
+{%endif%}
 </div>
 <div style="margin-bottom:10px;">
   <form method="post" action="{% url 'show_book' book.id%}">

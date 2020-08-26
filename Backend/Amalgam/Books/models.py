@@ -37,6 +37,8 @@ class Comment(models.Model):
     book = models.ForeignKey(Books, null=True, blank=True, on_delete=models.SET_NULL)
     content = models.TextField(blank=True)
     date_time = models.DateField(auto_now_add=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f'{self.content}'
