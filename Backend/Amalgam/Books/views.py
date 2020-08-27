@@ -67,6 +67,6 @@ def show_book(request, pk):
 def index(request):
     books = Books.objects.all()
     context = {
-        'books': books,
+        'books': books
     }
     return render(request, 'Books/index.html', context)

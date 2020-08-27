@@ -10,7 +10,9 @@
   <body>
 
 <div class="container">
+  <h3>Novel</h3>
   {% for book in books%}
+  {% ifequal book.category "1"%}
     <div style="margin-bottom:10px;">
   <ul class="list-group">
     <li class="list-group-item"><a href="{% url 'show_book' book.id %}">{{book.isbn}}</a></li>
@@ -19,6 +21,20 @@
     <li class="list-group-item">{{book.original_price}}</li>
   </ul>
   </div>
+  {%endifequal%}
+  {% endfor %}
+  <h3>Course</h3>
+  {% for book in books%}
+  {% ifequal book.category "2"%}
+    <div style="margin-bottom:10px;">
+  <ul class="list-group">
+    <li class="list-group-item"><a href="{% url 'show_book' book.id %}">{{book.isbn}}</a></li>
+    <li class="list-group-item">{{book.book_name}}</li>
+    <li class="list-group-item">{{book.offered_price}}</li>
+    <li class="list-group-item">{{book.original_price}}</li>
+  </ul>
+  </div>
+{%endifequal%}
   {% endfor %}
 </div>
 
