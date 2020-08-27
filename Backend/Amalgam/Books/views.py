@@ -4,6 +4,7 @@ from .forms import addBooksForm, commentForm
 from .models import Books, Comment
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.db.models import Q
 # Create your views here.
 
 
@@ -66,6 +67,25 @@ def show_book(request, pk):
 
 def index(request):
     books = Books.objects.all()
+    if request.method == 'POST':
+        search = request.POST['search']
+        filter_books = Books.objects.filter(Q(book_name__icontains=search))
+        novel = []
+        course = []
+        for item in filter_books:
+            if item.category == "1":
+                novel.append(item)
+            else:
+                course.append(item)
+
+        context = {
+            'filter_books': {
+                'novel': novel,
+                'course': course
+            },
+            'books': books
+        }
+        return render(request, 'Books/searchresults.html', context)
     context = {
         'books': books
     }
