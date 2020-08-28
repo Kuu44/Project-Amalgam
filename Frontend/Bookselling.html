@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="./Style/Bookselling.css">
+</head>
+<body>
+
+  <div class="topnav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#search">Search</a>
+    <a class="active" href="#profile">Profile</a>
+    <div class="dropdown">
+       <i class="arrow down"></i>
+         <div class="dropdown-content">
+           <select id="profile">
+            <option values="help">Help</option>
+            <option values="settings">Settings</option>
+            <option values="logout">Logout</option>
+          </select>
+         </div>
+    </div>
+  </div>
+  <h2 style="text-align:center"></h2>
+<div class="card">
+  <img src="./images/thenotebook.png" alt="notebook" height="200px" weight="200px">
+  <h3>Nicholas Sparks (Author)</h3>
+  <p class="title">Bachelors in Computer Engineering</p>
+  <p>Experience the unforgettable, heartbreaking love story set in post-World War II North Carolina about a young socialite and
+    the boy who once stole her heart -- one of PBS's "Great American Reads".</p>
+
+</div>
+<div class="review" width="50%">
+  <h3> Some Reviews</h3>
+  <img src="./images/pheobe.png" height="25px" weight="25px">
+  <div class="blue_box">
+    <p>Smelly cat loves this book.</p>
+  </div><br>
+
+  <img src="./images/monica.png" height="25px" weight="25px">
+  <div class="blue_box">
+    <p>This is the best love story I have ever read.</p>
+  </div>
+  <form action="/action_page.php">
+    <img src="./images/profile.png" height="25px" weight="25px">
+    <label for="phone"><input type="text" id="comment" placeholder="comment" pattern="[A-Z]"><br><br></label>
+    <input type="submit">
+  </form>
+</div>
+
+
+</body>
+</html>
