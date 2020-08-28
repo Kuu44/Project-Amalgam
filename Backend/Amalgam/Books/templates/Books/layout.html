@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+   <meta charset="utf-8">
+   <!--Custom css-->
+   <link rel="stylesheet" href="{%static 'css/site.css'%}" type="text/css" />
+   <!--Icons-->
+   <script src="https://kit.fontawesome.com/e3f2007728.js" crossorigin="anonymous"></script>
+   <!--boostrap-->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   <title>Amalgam</title>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="{%url 'index'%}" class="active">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  {% block search %}
+  {% endblock %}
+</div>
+<!-- First Genre Grid-->
+{% block content %}
+
+{% endblock %}
+<div style="padding-left:16px">
+
+</div>
+
+</body>
+</html>
