@@ -1,0 +1,8 @@
+<form method="POST">
+  {% csrf_token %} {{ form }}
+  <button type="submit">Register</button>
+
+  <small>
+    Already have an account?<a href="{% url 'login' %}">Log in here</a>
+  </small>
+</form>
