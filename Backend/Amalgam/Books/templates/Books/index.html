@@ -1,12 +1,48 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    {% load static %}
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{%static 'css/site.css'%}" type="text/css" />
-    <title>Amalgam</title>
-  </head>
-  <body>
-<h1 class="hello">Hello World</h1>
-  </body>
-</html>
+{% extends 'Books/layout.html '%}
+{% block nav %}
+<a href="{%url 'home'%}" >Home</a>
+<a href="{%url 'index'%}" class="active">Search</a>
+<a href="{%url 'profile'%}">Profile</a>
+<a href="{%url 'add'%}">Add</a>
+{%endblock %}
+{% block search %}
+<div class="search-container">
+  <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Search.." name="search" list="books">
+    <datalist id="books">
+      {% for book in books %}
+          <option value="{{book.book_name}}">
+      {% endfor %}
+    </datalist>
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+</div>
+{% endblock %}
+{% block content %}
+<div class="content" id="books" style="margin-bottom:30px; margin-top:20px;">
+  <h4 class="heading">Novel</h4>
+  <hr />
+  {% for book in books%}
+  {% ifequal book.category "1"%}
+  <div class="romantic_genre">
+    <img src="{{book.image.url}}" alt="Sandwich" height="300" width="300" style="width:100%">
+    <h3><a href="{% url 'show_book' book.id %}">{{book.book_name}}</a></h3>
+    <p>{{book.description}}</p>
+  </div>
+  {%endifequal%}
+  {% endfor %}
+  <hr />
+  <h4 class="heading"> Course</h4>
+  <hr />
+  {% for book in books%}
+  {% ifequal book.category "2"%}
+  <div class="thriller_genre">
+    <img src="{{book.image.url}}" alt="Sandwich" height="300" width="300" style="width:100%">
+    <h3><a href="{% url 'show_book' book.id %}">{{book.book_name}}</a></h3>
+    <p>{{book.description}}</p>
+  </div>
+  {%endifequal%}
+  {% endfor %}
+</div>
+{% endblock %}
