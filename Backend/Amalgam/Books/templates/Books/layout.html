@@ -10,11 +10,11 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
    <!---Kushal css-->
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <title data-n-head="true">Amalgam</title>
+   <title data-n-head="true">Kitabkhana</title>
    <meta data-n-head="true" name="viewport" content="width=device-width, initial-scale=1">
-   <meta data-n-head="true" data-hid="description" name="description" content="Welcome to Amalgam, a wonder place of sharing. Instantly connect with people like u who need books, based in Nepal.">
+   <meta data-n-head="true" data-hid="description" name="description" content="Welcome to Kitabkhana, a wonder place of sharing. Instantly connect with people like u who need books, based in Nepal.">
    <meta data-n-head="true" data-hid="og:title" property="og:title" content="Naya">
-   <meta data-n-head="true" data-hid="og:description" property="og:description" content="Welcome to Amalgam, a wonder place of sharing. Instantly connect with people like u who need books, based in Nepal.">
+   <meta data-n-head="true" data-hid="og:description" property="og:description" content="Welcome to Kitabkhana, a wonder place of sharing. Instantly connect with people like u who need books, based in Nepal.">
    <link data-n-head="true" rel="stylesheet" href="./Style/css2">
    <link rel="stylesheet" href="{%static 'css/style1.css'%}">
    <link rel="stylesheet" href="{%static 'css/style2.css'%}">
@@ -26,17 +26,25 @@
    <link rel="stylesheet" href="{%static 'css/background.css'%}">
 
 
-   <title>Amalgam</title>
+   <title>Kitabkhana</title>
 </head>
 <body>
 
 <div class="topnav">
+
   {% block nav %}
   {%endblock %}
 
   {% block search %}
   {% endblock %}
+
 </div>
+
+<span style="margin-top:10px";>
+  <a href="{%url 'logout'%}">
+<button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style="width:4%;float:right;"><i class="fas fa-power-off"></i></button>
+</a>
+</span>
 <!-- First Genre Grid-->
 {% block content %}
 
