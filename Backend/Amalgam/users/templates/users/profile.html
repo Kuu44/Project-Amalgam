@@ -1,0 +1,21 @@
+
+{%extends 'Books/layout.html' %}
+{% block nav %}
+<a href="{%url 'home'%}">Home</a>
+<a href="{%url 'index'%}">Search</a>
+<a href="{%url 'update'%}"  class="active">Profile</a>
+<a href="{%url 'add'%}">Add</a>
+{%endblock %}
+{%load crispy_forms_tags%}
+{%block content %}
+<h2 style="text-align:center">Hello,Chandler!</h2>
+ <div class="card">
+   <img src="{{./images/Profile.png}}" alt="John" height="200px" weight="200px">
+   <h3>Chandler Bing</h3>
+   <p class="title">Bachelors in Computer Engineering</p>
+   <p>Harvard University</p>
+   <p>ChandlerBing66@gmail.com</p>
+   <p><button>Contact</button></p>
+ </div>
+
+{% endblock %}
