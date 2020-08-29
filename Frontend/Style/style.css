@@ -1,4 +1,5 @@
 .topnav {
+    z-index: 10;
     overflow: hidden;
     background-color: #e9e9e9c0;
     position : fixed;
@@ -100,4 +101,14 @@
   .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+  }
+  #Homebutton{
+      background-color:#49beaa;
+  }
+  h3{
+      font: "Helvetica Neue", sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 1rem 0.125rem 1rem 2rem;
+      margin: 0;
   }
