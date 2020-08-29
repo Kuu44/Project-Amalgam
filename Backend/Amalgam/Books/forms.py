@@ -18,7 +18,7 @@ class addBooksForm(forms.ModelForm):
         required=True)
     description = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder': 'Description'}),
-        required=True, max_length=100)
+        required=True, max_length=500)
     image = forms.ImageField(required=True, max_length=100)
     choices = (
         ("1", "Novel"),

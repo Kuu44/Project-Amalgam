@@ -10,7 +10,7 @@ class Books(models.Model):
     date_time = models.DateField(auto_now_add=True)
     original_price = models.IntegerField()
     offered_price = models.IntegerField()
-    description = models.CharField(max_length=100)
+    description = models.CharField(max_length=500)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              null=True, blank=True, on_delete=models.SET_NULL)
     image = models.ImageField(upload_to='media', height_field=None,
