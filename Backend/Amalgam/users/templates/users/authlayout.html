@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% load crispy_forms_tags %}
+  {% load static %}
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title data-n-head="true">Login at Naya</title>
+  <meta data-n-head="true" name="viewport" content="width=device-width, initial-scale=1">
+  <link data-n-head="true" rel="icon" type="image/x-icon" href="#">
+  <link rel="stylesheet" href="{%static 'css/style1.css'%}">
+  <link rel="stylesheet" href="{%static 'css/style2.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <style type="text/css">
+    .VueCarousel {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .VueCarousel--reverse {
+      flex-direction: column-reverse;
+    }
+
+    .VueCarousel-wrapper {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .VueCarousel-inner {
+      display: flex;
+      flex-direction: row;
+      backface-visibility: hidden;
+    }
+
+    .VueCarousel-inner--center {
+      justify-content: center;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="{%static 'css/background.css'%}">
+  <meta data-hid="description" name="description" content="Login into Amalgam" data-n-head="true">
+</head>
+
+<body>
+  <div id="__layout">
+    <div data-v-7f9ae05b="">
+      <section data-v-7f9ae05b="" class="hero is-fullheight">
+        <div data-v-7f9ae05b="" class="hero-body">
+          <div data-v-7f9ae05b="" class="container">
+            <div data-v-7f9ae05b="" class="form account has-text-left">
+              <div data-v-7f9ae05b="" class="naya-logo margin-bottom-50-px has-text-centered"><a href="#" class="nuxt-link-active"><span class="logo">Amalgam</span></a></div>
+              <div data-v-7f9ae05b="" class="account-input">
+                {% block form_content %}
+                {% endblock %}
+              </div>
+              <div data-v-7f9ae05b="">
+                <!---->
+
+              </div>
+              <p data-v-7f9ae05b="" class="is-size-7 has-text-centered margin-top-20-px"><a data-v-7f9ae05b="" href="#" class="has-text-grey">
+                {% block amalgam%}
+                {% endblock %}
+                </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+</html>

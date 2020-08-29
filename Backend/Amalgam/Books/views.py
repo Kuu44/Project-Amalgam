@@ -90,3 +90,7 @@ def index(request):
         'books': books
     }
     return render(request, 'Books/index.html', context)
+
+
+def home(request):
+    return render(request, 'Books/home.html')

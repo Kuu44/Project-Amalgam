@@ -1,8 +1,31 @@
+{%extends 'users/authlayout.html'%}
+{% block form_content %}
 <form method="POST">
-  {% csrf_token %} {{ form }}
-  <button type="submit">Register</button>
+  {% csrf_token %} <center>
+    {{form.first_name}}
+    <br />
+    {{form.last_name}}
+    <br />
+    {{form.username}}
+    <br />
+    {{form.email}}
+    <br />
+    {{form.password1}}
+    <br />
+    {{form.password2}}
 
-  <small>
-    Already have an account?<a href="{% url 'login' %}">Log in here</a>
-  </small>
+  </center>
+  <br />
+  <center>
+
+    <p data-v-7f9ae05b="" class="has-text-centered margin-top-20-px"><button data-v-7f9ae05b="" typee="submit" class="button is-rounded">Register</button></p>
+  </center>
+  <br />
 </form>
+</form>
+{%endblock%}
+{% block amalgam%}
+Already have an
+<b data-v-7f9ae05b="">Amalgam</b> account?
+<br data-v-7f9ae05b=""> <span data-v-7f9ae05b="" class="has-text-primary"><a href="{% url 'login' %}" style="color:cornflowerblue;">Login here</a></span></a>
+{%endblock %}
