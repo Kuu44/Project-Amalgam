@@ -1,0 +1,39 @@
+
+{%extends 'Books/layout.html' %}
+{% block nav %}
+<a href="{%url 'home'%}">Home</a>
+<a href="{%url 'index'%}">Search</a>
+<a href="{%url 'profile'%}""  class="active">Profile</a>
+<a href="{%url 'add'%}">Add</a>
+{%endblock %}
+{%load crispy_forms_tags%}
+{%block content %}
+<div id="__layout">
+  <div data-v-7f9ae05b="">
+    <section data-v-7f9ae05b="" class="hero is-fullheight">
+      <div data-v-7f9ae05b="" class="hero-body">
+        <div data-v-7f9ae05b="" class="container">
+          <div data-v-7f9ae05b="" class="form account has-text-left">
+            <div data-v-7f9ae05b="" class="naya-logo margin-bottom-50-px has-text-centered"><a href="#" class="nuxt-link-active"><span class="logo">Amalgam</span></a></div>
+            <div data-v-7f9ae05b="" class="account-input">
+              <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                  <legend class="border-bottom mb-4"><img src="{{user.profile.image.url}}" height="50px" width="50px" />Profile Info</legend>
+                  {{ u_form|crispy }} {{ p_form|crispy }}
+                </fieldset>
+                  <p data-v-7f9ae05b="" class="has-text-centered margin-top-20-px"><button data-v-7f9ae05b="" type="submit" class="button is-rounded">Update</button></p>
+
+              </form>
+            </div>
+            <div data-v-7f9ae05b="">
+              <!---->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}
