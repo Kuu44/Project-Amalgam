@@ -1,56 +1,66 @@
-{% extends 'Books/layout.html '%}
-{% block nav %}
+{% extends 'Books/layout.html '%} {% block nav %}
 <a href="{%url 'home'%}" class="active">Home</a>
 <a href="{%url 'index'%}">Search</a>
 <a href="{%url 'profile'%}">Profile</a>
 <a href="{%url 'add'%}">Add</a>
-{%endblock %}
-{% block search %}
+{%endblock %} {% block search %}
 <div class="search-container">
   <form action="{% url 'index' %}" method="post">
     {% csrf_token %}
-    <input type="text" placeholder="Search.." name="search" list="books">
+    <input type="text" placeholder="Search.." name="search" list="books" />
     <datalist id="books">
       {% for book in books %}
-      <option value="{{book.book_name}}">
-        {% endfor %}
+      <option value="{{book.book_name}}">{% endfor %}</option>
     </datalist>
+
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
 </div>
-{% endblock %}
-{% block content %}
-<div class="content" id="books"  margin-top:20px;>
-{% if filter_books %}
-{% if filter_books.novel %}
+{% endblock %} {% block content %}
+<div class="content" id="books" margin-top:20px;>
+  {% if filter_books %} {% if filter_books.novel %}
   <h4 class="heading">Novel</h4>
   <hr />
-{% for book in filter_books.novel%}
+  {% for book in filter_books.novel%}
   <div class="thriller_genre">
-    <img src="{{book.image.url}}" alt="Sandwich" height="300" width="300" style="width:100%">
+    <img
+      src="{{book.image.url}}"
+      alt="Sandwich"
+      height="300"
+      width="300"
+      style="width: 100%"
+    />
     <h3><a href="{% url 'show_book' book.id %}">{{book.book_name}}</a></h3>
     <p>{{book.description}}</p>
+    <h3></h3>
   </div>
-{% endfor %}
-<hr />
-{%endif%}
-{% if filter_books.course %}
+  {% endfor %}
+  <hr />
+  {%endif%} {% if filter_books.course %}
   <h4 class="heading">Course</h4>
   <hr />
-{% for book in filter_books.course%}
+  {% for book in filter_books.course%}
   <div class="thriller_genre">
-    <img src="{{book.image.url}}" alt="Sandwich" height="300" width="300" style="width:100%">
+    <img
+      src="{{book.image.url}}"
+      alt="Sandwich"
+      height="300"
+      width="300"
+      style="width: 100%"
+    />
     <h3><a href="{% url 'show_book' book.id %}">{{book.book_name}}</a></h3>
     <p>{{book.description}}</p>
   </div>
-{% endfor %}
-{%endif%}
+  {% endfor %} {%endif%}
 </div>
 {%else%}
 <h1 class="search_fail">No results found</h1>
-<div style="text-align:center">
-  <a href="{%url 'index'%}"><button type="button" class="btn btn-secondary" style="align:center">Home</button></a>
+<div style="text-align: center">
+  <a href="{%url 'index'%}"
+    ><button type="button" class="btn btn-secondary" style="align: center">
+      Home
+    </button></a
+  >
 </div>
 
-{%endif%}
-{% endblock %}
+{%endif%} {% endblock %}

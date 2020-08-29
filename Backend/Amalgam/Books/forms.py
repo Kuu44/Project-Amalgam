@@ -43,7 +43,7 @@ class addBooksForm(forms.ModelForm):
 
 class commentForm(forms.ModelForm):
     content = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'test'}),
+        attrs={'placeholder': 'Write a comment'}),
         required=True, max_length=100)
 
     class Meta:

@@ -17,7 +17,7 @@ def add(request):
             stock = books.save(commit=False)
             stock.user = request.user
             stock.save()
-            return HttpResponse('Hi')
+            return HttpResponseRedirect(reverse('show_book',args=[stock.id]))
     context = {
         'form': books
     }

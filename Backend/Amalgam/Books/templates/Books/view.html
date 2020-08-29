@@ -1,48 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
     {% load static %}
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{%static 'css/site.css'%}" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Amalgam</title>
+    <link rel="stylesheet" href="{% static 'css/Bookselling.css'%}" />
+    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
+    <div class="topnav">
+      <a href="{%url 'home'%}">Home</a>
+      <a href="{%url 'index'%}" class="active">Search</a>
+      <a href="{%url 'profile'%}">Profile</a>
+      <a href="{%url 'add'%}">Add</a>
 
-<div class="container">
-    <div style="margin-bottom:10px;">
-  <ul class="list-group">
-    <li class="list-group-item">{{book.isbn}}</li>
-    <li class="list-group-item">{{book.book_name}}</li>
-    <li class="list-group-item">{{book.offered_price}}</li>
-    <li class="list-group-item">{{book.original_price}}</li>
-    <li class="list-group-item">{{book.data_time}}</li>
-    <li class="list-group-item">{{book.description}}</li>
-    <li class="list-group-item">{{book.user}}</li>
-  </ul>
-  </div>
-</div>
-<div style="margin-bottom:10px;">
-  {% if comments %}
-{% for comment in comments %}
-<ul class="list-group">
-  <li class="list-group-item">{{comment.content}}</li>
-  <li class="list-group-item">{{comment.user.username}} at {{comment.date_time}}</li>
-</ul>
-{% endfor %}
-{%endif%}
-</div>
-<div style="margin-bottom:10px;">
-  <form method="post" action="{% url 'show_book' book.id%}">
-    {%csrf_token %}
-    {{commentform.content}}
-  </form>
-</div>
+      <div class="search-container">
+        <form action="{% url 'index' %}" method="post">
+          {% csrf_token %}
+          <input
+            type="text"
+            placeholder="Search.."
+            name="search"
+            list="books"
+          />
+          <datalist id="books">
+            {% for book in books %}
+            <option value="{{book.book_name}}">{% endfor %}</option>
+          </datalist>
 
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <h2 style="text-align: center"></h2>
+    <div class="card">
+      <img
+        src="{{book.image.url}}"
+        alt="notebook"
+        height="200px"
+        weight="200px"
+      />
+      <h3>{{book.book_name}}</h3>
+      <div class="blue_box">
+        <p>Offered Price:{{book.offered_price}}</p>
+        <p>Original Price:{{book.original_price}}</p>
+        <p>Description:{{book.description}}</p>
+        <p>Added by:{{book.user}}</p>
+      </div>
+      <br />
+    </div>
+    <div class="review" width="50%">
+      {% if comments %}
+      <h3>Comments</h3>
+      {% for comment in comments %}
+      <div class="blue_box">
+        <p>{{comment.content}}</p>
+        <p>{{comment.user.username}} at {{comment.date_time}}</p>
+      </div>
+      {%endfor%} {%endif%}
+      <form method="post" action="{% url 'show_book' book.id%}">
+        {%csrf_token %}
+        <label for="phone">
+          {{commentform.content}} <input type="submit" /><br /><br
+        /></label>
+      </form>
+    </div>
   </body>
 </html>
