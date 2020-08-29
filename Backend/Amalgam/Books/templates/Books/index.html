@@ -6,21 +6,17 @@
 <a href="{%url 'add'%}">Add</a>
 {%endblock %}
 {% block search %}
-<form action="{% url 'index' %}" method="post">
-  {% csrf_token %}
-<div class="search-container" style="flex:1;">
-  <div class="input-group">
-
-    <input type="text" placeholder="Search.." name="search" list="books" class="form-control">
+<div class="search-container">
+  <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Search.." name="search" list="books">
     <datalist id="books">
       {% for book in books %}
           <option value="{{book.book_name}}">
       {% endfor %}
     </datalist>
-    <div class="input-group-append"> <button type="submit"><i class="fa fa-search"></i></button>
-    </div>
-  </div>
-</form>
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
 </div>
 {% endblock %}
 {% block content %}

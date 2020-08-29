@@ -6,31 +6,22 @@
 <a href="{%url 'add'%}">Add</a>
 {%endblock %}
 {% block search %}
-<form action="{% url 'index' %}" method="post">
-  {% csrf_token %}
-<div class="search-container" style="flex:1;">
-  <div class="input-group">
-
-    <input type="text" placeholder="Search.." name="search" list="books" class="form-control">
+<div class="search-container">
+  <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Search.." name="search" list="books">
     <datalist id="books">
       {% for book in books %}
-          <option value="{{book.book_name}}">
-      {% endfor %}
+      <option value="{{book.book_name}}">
+        {% endfor %}
     </datalist>
-    <div class="input-group-append"> <button type="submit"><i class="fa fa-search"></i></button>
-    </div>
-  </div>
-</form>
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
 </div>
 {% endblock %}
 {% block content %}
-{% if not filter_books %}
-<h1 class="search_fail">No results found</h1>
-<div style="text-align:center">
-  <a href="{%url 'index'%}"><button type="button" class="btn btn-secondary" style="align:center">Home</button></a>
-</div>
-{%endif%}
 <div class="content" id="books"  margin-top:20px;>
+{% if filter_books %}
 {% if filter_books.novel %}
   <h4 class="heading">Novel</h4>
   <hr />
@@ -55,7 +46,11 @@
 {% endfor %}
 {%endif%}
 </div>
+{%else%}
+<h1 class="search_fail">No results found</h1>
+<div style="text-align:center">
+  <a href="{%url 'index'%}"><button type="button" class="btn btn-secondary" style="align:center">Home</button></a>
+</div>
 
-
-
+{%endif%}
 {% endblock %}
